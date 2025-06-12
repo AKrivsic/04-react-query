@@ -8,7 +8,7 @@ interface GetMoviesRes {
     results: Movie[];
 }
 
-export const fetchMovies = async (query: string) => {
+export const fetchMovies = async (query: string): Promise<Movie[]> => {
     const config = {
         params: { query },
         headers: { Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}` },
