@@ -35,10 +35,7 @@ export default function App() {
     setQuery(newQuery);
     setPage(1);
   };
-
-  const handlePageChange = ({ selected }: { selected: number }) => {
-    setPage(selected + 1);
-  };
+  const totalPages = data?.total_pages ?? 0;
 
   return (
     <div className={css.app}>
@@ -52,12 +49,12 @@ export default function App() {
         <>
           <MovieGrid movies={data.results} onSelect={setSelectedMovie} />
 
-          {data.total_pages > 1 && (
+          {totalPages > 1 && (
             <ReactPaginate
-              pageCount={data.total_pages}
+              pageCount={totalPages}
               pageRangeDisplayed={5}
               marginPagesDisplayed={1}
-              onPageChange={handlePageChange}
+              onPageChange={({ selected }) => setPage(selected + 1)}
               forcePage={page - 1}
               containerClassName={css.pagination}
               activeClassName={css.active}

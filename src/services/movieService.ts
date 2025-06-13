@@ -5,9 +5,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 
 interface GetMoviesRes {
     results: Movie[];
-    page: number;
     total_pages: number;
-    total_results: number;
 }
 
 export const fetchMovies = async (
